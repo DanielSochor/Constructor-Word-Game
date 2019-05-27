@@ -18,26 +18,30 @@ function game() {
     inquirer.prompt([{
         name: "guessedLetter",
         type: 'input',
-        message: "please guess a letter"
+        message: "Please guess a letter"
     }])
         .then(response => {
-
-            if (response.guessedLetter == undefined) {
+            if (response.guessedLetter === '') {
                 console.log('Please enter a letter');
                 game();
             } else {
-                if (!response.guessedLetter.match(/^[A-Za-z]+$/)) {
-                    console.log('Please enter only letters')
+                if (response.guessedLetter.length > 1) {
+                    console.log('Please enter only a single letter')
                     game();
                 } else {
-                    var letterInput = response.guessedLetter.toLowerCase();
-                    if (guessedLetters.includes(letterInput)) {
-                        console.log("This letter has already been guessed")
+                    if (!response.guessedLetter.match(/^[A-Za-z]+$/)) {
+                        console.log('Please enter only letters')
                         game();
                     } else {
-                        guessedLetters.push(letterInput);
-                        console.log('guessed letter array is: ' + guessedLetters)
-                        game();
+                        var letterInput = response.guessedLetter.toLowerCase();
+                        if (guessedLetters.includes(letterInput)) {
+                            console.log("This letter has already been guessed")
+                            game();
+                        } else {
+                            guessedLetters.push(letterInput);
+                            console.log('guessed letter array is: ' + guessedLetters)
+                            game();
+                        }
                     }
                 }
             }
