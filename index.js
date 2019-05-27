@@ -3,16 +3,46 @@ var inquirer = require("inquirer");
 //randomly selects a word and use the word constructor to store it
 //prompts the user for each guess and keeps track of the user's remaining guesses
 
-var wordsToGuess = ['Jurrasic Park','Lost World'];
-
-var randomIndex = wordsToGuess.length;
-console.log(randomIndex);
+//construct letter to guess
 
 
+var wordArray = ['Jurrasic Park', 'Lost World'];
+var wordtoGuess = wordArray[Math.floor(Math.random() * wordArray.length)];
+var guessedLetters = [];
 
+game();
 
+//adjust this to accept only a single letter and handle undefined case
 
+function game() {
+    inquirer.prompt([{
+        name: "guessedLetter",
+        type: 'input',
+        message: "please guess a letter"
+    }])
+        .then(response => {
 
+            if (response.guessedLetter == undefined) {
+                console.log('Please enter a letter');
+                game();
+            } else {
+                if (!response.guessedLetter.match(/^[A-Za-z]+$/)) {
+                    console.log('Please enter only letters')
+                    game();
+                } else {
+                    var letterInput = response.guessedLetter.toLowerCase();
+                    if (guessedLetters.includes(letterInput)) {
+                        console.log("This letter has already been guessed")
+                        game();
+                    } else {
+                        guessedLetters.push(letterInput);
+                        console.log('guessed letter array is: ' + guessedLetters)
+                        game();
+                    }
+                }
+            }
+        })
+}
 
 
 
