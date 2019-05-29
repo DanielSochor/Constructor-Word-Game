@@ -1,5 +1,5 @@
 var inquirer = require("inquirer");
-var letter = require('./letter');
+//var letter = require('./letter');
 var word = require('./word');
 
 //randomly selects a word and use the word constructor to store it
@@ -8,6 +8,8 @@ var word = require('./word');
 var wordArray = ['Jurrasic Park', 'Lost World'];
 var wordtoGuess = wordArray[Math.floor(Math.random() * wordArray.length)];
 var guessedLetters = [];
+
+var wordtoGuessObject = new word.word(wordtoGuess);
 
 game();
 
@@ -37,7 +39,9 @@ function game() {
                         } else {
                             guessedLetters.push(letterInput);
                             console.log('guessed letter array is: ' + guessedLetters)
-                            var test = new letter.letter(response.guessedLetter);
+                            //var test = new letter.letter(response.guessedLetter);
+
+                            //var  = new word.word(response.guessedLetter);
                             game()
                         }
                     }
