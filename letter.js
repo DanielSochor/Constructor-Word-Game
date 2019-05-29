@@ -1,24 +1,26 @@
 class Letter {
-    constructor(character, guessed) {
+    constructor(character) {
         this.character = character;
-        this.guessed = guessed;
-        this.correctGuess = function () {
-            if (guessed == true) {
-                return this.character;
-            } else {
-                return "_";
-            }
-        }
-        this.guess = function (guess) {
-            if (guess == this.character) {
-                this.guessed = true;
-                this.correctGuess();
-            }
-        }
-    }
-    printStats() {
-        console.log(this);
+        this.guessed = false;
+        // this.correctGuess = function () {
+        //     if (guessed == true) {
+        //         return this.character;
+        //     } else {
+        //         return "_";
+        //     }
+        // }
+        // this.guess = function (guess) {
+        //     if (guess == this.character) {
+        //         this.guessed = true;
+        //         this.correctGuess();
+        //     }
+        // }
+        console.log('letter call works');
     }
 }
 
-console.log('letter');
+//console.log('letter');
+
+module.exports = {
+    'letter': Letter,
+}
