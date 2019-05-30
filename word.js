@@ -14,7 +14,7 @@ class Word {
                 var character = new letter.letter(word[i]);
                 this.arrayOfLetterObjects.push(character);
             }
-            console.log(this.arrayOfLetterObjects);
+            //console.log(this.arrayOfLetterObjects);
             this.displayWordToGuess();
         }
         //call the function on each letter object that displays letter or _ and concats
@@ -29,19 +29,28 @@ class Word {
 
         this.displayWordToGuess = function () {
             this.displayWord = [];
+            var remainingUnguessedLetters = 0;
             for (var i = 0; i < this.arrayOfLetterObjects.length; i++) {
                 if (this.arrayOfLetterObjects[i].guessed == false) {
                     this.displayWord += '_ ';
+                    remainingUnguessedLetters += 1;
                 } else {
                     this.displayWord += (this.arrayOfLetterObjects[i].character + ' ');
                 }
             }
-            console.log(' ');
-            console.log('Guess this word!:');
-            console.log(this.displayWord);
-            console.log(' ');
+            if (remainingUnguessedLetters > 0) {
+                console.log(' ');
+                console.log('Guess this word!:');
+                console.log(this.displayWord);
+                console.log(' ');
+            } else {
+                console.log(' ');
+                console.log(this.displayWord);
+                console.log(' ');
+                console.log('You have guessed all the letters! Good job!');
+                return true;
+            }
         }
-
         this.wordString(word);
     }
 }
