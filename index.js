@@ -40,16 +40,17 @@ function game() {
                             guessedLetters.push(letterInput);
                             //console.log('guessed letter array is: ' + guessedLetters)
                             //console.log('arrayOfLetterObjects: ' + wordtoGuessObject.arrayOfLetterObjects);
-                        
-                            for(var i = 0; i< wordtoGuessObject.arrayOfLetterObjects.length; i++){
-                                if(wordtoGuessObject.arrayOfLetterObjects[i].character == letterInput){
-                                    wordtoGuessObject.arrayOfLetterObjects[i].guess();
-                                    console.log('You are correct!');
+
+                            for (var i = 0; i < wordtoGuessObject.arrayOfLetterObjects.length; i++) {
+                                if (wordtoGuessObject.arrayOfLetterObjects[i].character == letterInput || wordtoGuessObject.arrayOfLetterObjects[i].character == letterInput.toUpperCase()) {
+                                    wordtoGuessObject.arrayOfLetterObjects[i].guessed = true;
+                                    //console.log('You are correct!');
                                 } else {
-                                    console.log('no match');
+                                    //console.log('no match');
                                 }
                             }
-                            wordtoGuessObject.wordString();
+                            wordtoGuessObject.displayWordToGuess();
+                            //wordtoGuessObject.wordString();
 
 
 
