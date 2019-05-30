@@ -38,7 +38,21 @@ function game() {
                             game();
                         } else {
                             guessedLetters.push(letterInput);
-                            console.log('guessed letter array is: ' + guessedLetters)
+                            //console.log('guessed letter array is: ' + guessedLetters)
+                            //console.log('arrayOfLetterObjects: ' + wordtoGuessObject.arrayOfLetterObjects);
+                        
+                            for(var i = 0; i< wordtoGuessObject.arrayOfLetterObjects.length; i++){
+                                if(wordtoGuessObject.arrayOfLetterObjects[i].character == letterInput){
+                                    wordtoGuessObject.arrayOfLetterObjects[i].guess();
+                                    console.log('You are correct!');
+                                } else {
+                                    console.log('no match');
+                                }
+                            }
+                            wordtoGuessObject.wordString();
+
+
+
                             //var test = new letter.letter(response.guessedLetter);
 
                             //var  = new word.word(response.guessedLetter);

@@ -6,19 +6,23 @@ class Word {
         this.arrayOfLetterObjects = [];
         this.displayWord = '';
         //array of `new` Letter objects representing the letters of the underlying word
-console.log('word to guess is: ' + word);
+        //console.log('word to guess is: ' + word);
         this.wordString = function (word) {
             //console.log('passed in word is: ' + word)
-            for (var i = 0; i < word.length; i++){
+            for (var i = 0; i < word.length; i++) {
                 var character = new letter.letter(word[i]);
                 this.arrayOfLetterObjects.push(character);
-                if(character.guessed == false){
+                if (character.guessed == false) {
                     this.displayWord += '_ ';
                 } else {
-                    this.displayWord += '  ';
+                    this.displayWord += (character.character + ' ');
                 }
             }
+            console.log(this.arrayOfLetterObjects);
+            console.log(' ');
+            console.log('Guess this word!:');
             console.log(this.displayWord);
+            console.log(' ');
         }
         //call the function on each letter object that displays letter or _ and concats
         this.guessOnEachLetter = function (character) {
